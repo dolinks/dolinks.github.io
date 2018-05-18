@@ -207,8 +207,29 @@
       		<p>基于A闪的消除游戏学习笔记，整理出整体开发流程陆续更新。</p>
 <p>测试地址:<a href="https://dolinks.github.io/" target="_blank" rel="noopener">早晚会有的</a></p>
 <h2 id="策划"><a href="#策划" class="headerlink" title="策划"></a>策划</h2><h2 id="核心算法"><a href="#核心算法" class="headerlink" title="核心算法"></a>核心算法</h2><h4 id="元素算法"><a href="#元素算法" class="headerlink" title="元素算法"></a>元素算法</h4><h4 id="道具算法"><a href="#道具算法" class="headerlink" title="道具算法"></a>道具算法</h4><p>主要封装了使用道具的方法，不同的道具类型调用对应的处理逻辑。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class PropLogic &#123;</span><br><span class="line">public static useProp(proptype:number,ellocation:number)&#123;</span><br><span class="line">		switch(proptype)&#123;</span><br><span class="line">			<span class="keyword">case</span> 0:</span><br><span class="line">			PropLogic.tongse(ellocation);</span><br><span class="line">			<span class="built_in">break</span>;</span><br><span class="line">			<span class="keyword">case</span> 1:</span><br><span class="line">			PropLogic.zhadan(ellocation);</span><br><span class="line">			<span class="built_in">break</span>;</span><br><span class="line">			<span class="keyword">case</span> 2:</span><br><span class="line">			PropLogic.zhenghang(ellocation);</span><br><span class="line">			<span class="built_in">break</span>;</span><br><span class="line">			<span class="keyword">case</span> 3:</span><br><span class="line">			PropLogic.zhenglie(ellocation);</span><br><span class="line">			<span class="built_in">break</span>;</span><br><span class="line">			<span class="keyword">case</span> 4:</span><br><span class="line">			PropLogic.chanzi(ellocation);</span><br><span class="line">			<span class="built_in">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>#### </p>
+<pre><code class="bash">class PropLogic {
+public static useProp(proptype:number,ellocation:number){
+        switch(proptype){
+            <span class="keyword">case</span> 0:
+            PropLogic.tongse(ellocation);
+            <span class="built_in">break</span>;
+            <span class="keyword">case</span> 1:
+            PropLogic.zhadan(ellocation);
+            <span class="built_in">break</span>;
+            <span class="keyword">case</span> 2:
+            PropLogic.zhenghang(ellocation);
+            <span class="built_in">break</span>;
+            <span class="keyword">case</span> 3:
+            PropLogic.zhenglie(ellocation);
+            <span class="built_in">break</span>;
+            <span class="keyword">case</span> 4:
+            PropLogic.chanzi(ellocation);
+            <span class="built_in">break</span>;
+        }
+    }
+}
+
+</code></pre>
 <h2 id="界面原型布局与算法"><a href="#界面原型布局与算法" class="headerlink" title="界面原型布局与算法"></a>界面原型布局与算法</h2><h4 id="界面原型"><a href="#界面原型" class="headerlink" title="界面原型"></a>界面原型</h4><img src="/2018/05/16/egret-eliminate-notes/WX20180516-163249.png" title="This is an example image">
 <ul>
 <li>紫色关卡条件：显示当前关卡需要消除多少元素，</li>
@@ -222,12 +243,15 @@
 <li>背景图场景图（不同关卡背景图不一样）</li>
 <li>道具栏目（5种道具，道具不为零为彩色，为零为不可用）</li>
 </ul>
-<h4 id="布局算法"><a href="#布局算法" class="headerlink" title="布局算法"></a>布局算法</h4><p>元素宽度：(stageWidth-40）/8</p>
+<h4 id="布局算法"><a href="#布局算法" class="headerlink" title="布局算法"></a>布局算法</h4><p>因为设备屏幕分辨率不同所以要对元素的生成进行运算。</p>
+<p>元素宽度：(stageWidth-40）/8</p>
 <img src="/2018/05/16/egret-eliminate-notes/WX20180516-163746.png" title="This is an example image">
 <p>道具宽度：(StageWidth - 15 * 5) / 5<br><img src="/2018/05/16/egret-eliminate-notes/WX20180516-163827.png" title="This is an example image"></p>
 <h4 id="性能界面拆分"><a href="#性能界面拆分" class="headerlink" title="性能界面拆分"></a>性能界面拆分</h4><p>优化Drawcall<br>cacheAsBitmap：不同图片合成一个大的纹理</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo -g</span><br></pre></td></tr></table></figure>
-
+<h4 id="显示列表（场景控制）"><a href="#显示列表（场景控制）" class="headerlink" title="显示列表（场景控制）"></a>显示列表（场景控制）</h4><p>addChild：添加显示列表<br>RemoveChild：移除显示列表</p>
+<p>Container：容器<br>    Stage：舞台（四种缩放模式）<br>    ScrollView：现实对象拖拽<br>    Sprite: 纯粹容器<br>bitmap：显示位图（）<br>bitmaptext：位图文本<br>TextField 文本<br>MovieClip：逐帧动画<br>Shape 适量绘图</p>
+<p>九宫格：圆角矩形的位图拉伸（不会导致圆角矩形拉伸变形）</p>
+<h4 id="Event类"><a href="#Event类" class="headerlink" title="Event类"></a>Event类</h4>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>

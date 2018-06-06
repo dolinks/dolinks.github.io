@@ -95,6 +95,8 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
+				    <li><a href="/categories/Book/" class="animsition-link">Book<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/Draw/" class="animsition-link">Draw<small>(4)</small></a></li>
 				    
 				    <li><a href="/categories/Game/" class="animsition-link">Game<small>(1)</small></a></li>
@@ -206,6 +208,7 @@
         <div class="col-md-8 col-md-offset-2">
       		<p>基于A闪的消除游戏学习笔记，整理出整体开发流程陆续更新。</p>
 <p>测试地址:<a href="https://dolinks.github.io/180525143357" target="_blank" rel="noopener">已经有了</a></p>
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>先把心得放到前边，学习东西总是体会最重要。以前从来没有写过游戏，对于内部的逻辑很多时候都是自己猜测去做，这个demo对于我来说，可能最大的意义是一个完整的去开发，从而理解做一个游戏用怎样的一个思路去写。<br>    先是分析游戏内部有哪些对象（元素）、角色、场景。对象有哪些属性，角色有哪些方法(或是动作，技能，物品)。场景有哪些类型（关卡），这些场景与对象之间的联系（比如说三个相同色的元素会消除）。通过这些方面的分析，能够帮助清楚代码中框架以及类如何设计。游戏中有专门处理数据的类、处理动画的类、还有控制器类、处理视图的类。我觉得分析程序往往是把东西拆分成独立的对象，从而细化对象的特性。在通过控制逻辑整理他们之间的关系。这样在遇到更为复杂的设计时才能清楚自己想什么，准备做什么。</p>
 <h2 id="策划"><a href="#策划" class="headerlink" title="策划"></a>策划</h2><h2 id="核心算法"><a href="#核心算法" class="headerlink" title="核心算法"></a>核心算法</h2><h4 id="元素算法"><a href="#元素算法" class="headerlink" title="元素算法"></a>元素算法</h4><h4 id="道具算法"><a href="#道具算法" class="headerlink" title="道具算法"></a>道具算法</h4><p>主要封装了使用道具的方法，不同的道具类型调用对应的处理逻辑。</p>
 <pre><code class="bash">class PropLogic {
 public static useProp(proptype:number,ellocation:number){
